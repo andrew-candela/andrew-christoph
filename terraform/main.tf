@@ -53,3 +53,7 @@ resource "aws_iam_user_policy_attachment" "kinesisMessanger" {
   user       = aws_iam_user.kinesisMessanger.name
   policy_arn = aws_iam_policy.MessangerPolicy.arn
 }
+
+resource "aws_iam_access_key" "kinesisMessanger" {
+  user = aws_iam_user.kinesisMessanger.name
+}
