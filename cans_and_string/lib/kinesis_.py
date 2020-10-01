@@ -1,5 +1,6 @@
 import boto3
 import os
+import time
 
 
 class KinesisClient():
@@ -54,6 +55,7 @@ class KinesisClient():
                     print(record['Data'].decode())
                     yield record['Data'].decode()
                 shard_iterator = resp['NextShardIterator']
+                time.sleep(1)
             except KeyboardInterrupt:
                 print("\nGoodbye!\n")
                 break
